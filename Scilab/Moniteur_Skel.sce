@@ -43,6 +43,7 @@
    exec('Optim_Scilab.sci');
    exec('Wolfe_skel.sci');
    exec('Gradient_V.sci');
+   exec('Gradient_Polak.sci');
    //titrgr = "Fonction optim de Scilab sur le probleme primal";
 
    // -----> A completer...
@@ -56,7 +57,7 @@
    // La dimension (n-md) est celle du probleme primal
 
    xini = 0.1 * rand(n-md,1);
-  [fopt,xopt,gopt] = Gradient_V(OraclePG,xini);
+  [fopt,xopt,gopt] = Gradient_Polak(OraclePG,xini);
    
 
 // ----------------------------

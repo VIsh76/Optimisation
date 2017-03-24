@@ -36,18 +36,11 @@ function [fopt,xopt,gopt]=Gradient_Polak(Oracle,xini)
 // Boucle sur les iterations
 // -------------------------
 
-   x1= xini;
-   x2=x1;
-   alpha = alphai;
+
    kstar = iter;
-   [F,G]=Oracle(x,4);
-   D1=-G;
-   D2=D1;
-   x=x-G;
+   x=xini;
    for k = 1:iter
-
 //    - valeur du critere et du gradient
-
       ind = 4;
       [F,G] = Oracle(x,ind);
 //    - test de convergence
@@ -58,16 +51,22 @@ function [fopt,xopt,gopt]=Gradient_Polak(Oracle,xini)
       end
 
 //    - calcul de la direction de descente
-      D1 = -G+beta*D2;
-      D2=D1;
+      if(k==1) then
+        D=-G;
+      else 
+        beta=(G'*(G-Gbis))/(Gbis'*Gbis);
+        D=-G+beta*D;
+      end    
+      Gbis=G;
+        
   
 //    - calcul de la longueur du pas de gradient
 
-      
+      alpha=Wolfe(1,x,D,Oracle);
 
 //    - mise a jour des variables
 
-      x = x + (alpha*D1);
+      x = x + (alpha*D);
 
 //    - evolution du gradient, du pas et du critere
 
