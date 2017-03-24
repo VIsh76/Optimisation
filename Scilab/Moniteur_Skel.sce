@@ -28,7 +28,7 @@
    exec('HydrauliqueP.sci');
    exec('HydrauliqueD.sci');
    exec('Verification.sci');
-
+   exec('Gradient_F.sci');
 // ------------------------------------------
 // Fonctions a ecrire dans le cadre du projet
 // ------------------------------------------
@@ -39,8 +39,8 @@
    // Exemple : la fonction "optim" de Scilab
    //
    exec('OraclePG.sci');
-   F=OraclePG())
-   //exec('Optim_Scilab.sci');
+   //F=OraclePG())
+   exec('Optim_Scilab.sci');
    //titrgr = "Fonction optim de Scilab sur le probleme primal";
 
    // -----> A completer...
@@ -54,6 +54,7 @@
    // La dimension (n-md) est celle du probleme primal
 
    xini = 0.1 * rand(n-md,1);
+   //[fopt,xopt,gopt] = Gradient_F(OraclePG,xini);
 
 // ----------------------------
 // Minimisation proprement dite
@@ -61,7 +62,7 @@
 
    // Exemple : la fonction "optim" de Scilab
    //
-   //[fopt,xopt,gopt] = Optim_Scilab(OraclePG,xini);
+   [fopt,xopt,gopt] = Optim_Scilab(OraclePG,xini);
 
    // -----> A completer...
 

@@ -1,13 +1,23 @@
-   function [F,G,ind]=OraclePG(qc,ind)
-       if ind==2 then
-           F=(1/3)*((q0+B*qc)'*((r.*(q0+B*qc).*abs(q0+B*qc))))+pr'*(Ar*(q0+B*qc))
-       else if ind==3 then
-           G=B*((q0+B*qc).*abs(q0+B*qc)).*r+Ar'*pr)
-       else
-           F=(1/3)*((q0+B*qc)'*((r.*(q0+B*qc).*abs(q0+B*qc))))+pr'*(Ar*(q0+B*qc))
-           G=B*((q0+B*qc).*abs(q0+B*qc)).*r+Ar'*pr)
-       end
-   endfunction
+Function [F,G,ind]=OraclePG(qc,ind)
+    F=0;
+    G=0;
+    x=q0+B*qc;
+    y=r.*x.*abs(x);
+    z=Ar'*pr;
+    if ind==2 then
+        F=(1/3)*x'*y+(x'*z);
+    elseif ind==3 then
+        G=B'*(y+z);
+    elseif ind==4 then
+        F=(1/3)*x'*y+(x'*z);
+        G=B'*(y+z);
+    end      
+endfunction
+
+
+
+  
+
    
        
    
