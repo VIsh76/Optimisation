@@ -1,4 +1,4 @@
-Function [F,G,ind]=OraclePG(qc,ind)
+function [F,G,ind]=OraclePG(qc,ind)
     F=0;
     G=0;
     x=q0+B*qc;

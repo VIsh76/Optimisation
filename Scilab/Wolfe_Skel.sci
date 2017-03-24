@@ -67,10 +67,10 @@ function [alphan,ok]=Wolfe(alpha,x,D,Oracle)
       // Calcul des conditions de Wolfe
       [F2,G2]=OraclePG(xn,4);
       
-      if(F2>F+(omega1*alphan*G'*D) then
+      if(F2>F+(omega1*alphan*G'*D)) then
         alphamax=alphan;
         alphan=0.5*(alphamin+alphamax);
-      elseif(G1'*D<omega2*G'*D) then
+      elseif(G2'*D<omega2*G'*D) then
         alphamin=alphan;
         if(alphamax==%inf) then
             alphan=2*alphamin;

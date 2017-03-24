@@ -22,6 +22,7 @@ function [fopt,xopt,gopt]=Gradient_V(Oracle,xini)
    default = ["5000";"0.0005";"0.000001"];
    [ok,iter,alphai,tol] = getvalue(titre,labels,typ,default);
 
+
 // ----------------------------
 // Initialisation des variables
 // ----------------------------
@@ -62,10 +63,9 @@ function [fopt,xopt,gopt]=Gradient_V(Oracle,xini)
       [alpha,ok] = Wolfe(1,x,D,Oracle);
 
 //    - mise a jour des variables
-      if(ok!=1) then
-        print('mauvais arret');
-      end    
-        
+      if(ok~=2 ) then
+        disp('mauvais arret');
+      end         
       x = x + (alpha*D);
 
 //    - evolution du gradient, du pas et du critere
