@@ -3,7 +3,7 @@
 //  MONITEUR D'ENCHAINEMENT POUR LE CALCUL DE L'EQUILIBRE D'UN RESEAU D'EAU  //
 //                                                                           //
 ///////////////////////////////////////////////////////////////////////////////
-
+funcprot(0);
 // --------------------------------------
 // Dimensionnement de l'espace de travail
 // --------------------------------------
@@ -41,10 +41,10 @@
    exec('OraclePG.sci');
    //F=OraclePG())
    exec('Optim_Scilab.sci');
-   exec('Wolfe_skel.sci');
+   exec('Wolfe_Skel.sci');
    exec('Gradient_V.sci');
    exec('Gradient_Polak.sci');
-   //titrgr = "Fonction optim de Scilab sur le probleme primal";
+   titrgr = "Fonction optim de Scilab sur le probleme primal";
 
    // -----> A completer...
    // -----> A completer...
@@ -57,7 +57,8 @@
    // La dimension (n-md) est celle du probleme primal
 
    xini = 0.1 * rand(n-md,1);
-  [fopt,xopt,gopt] = Gradient_Polak(OraclePG,xini);
+  [fopt,xopt,gopt] = Gradient_V(OraclePG,xini);
+//  [fopt,xopt,gopt] = Gradient_Polak(OraclePG,xini);
    
 
 // ----------------------------

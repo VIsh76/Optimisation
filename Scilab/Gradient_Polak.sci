@@ -95,6 +95,6 @@ function [fopt,xopt,gopt]=Gradient_Polak(Oracle,xini)
 
 // - visualisation de la convergence
 
-   //Visualg(logG,logP,Cout);
+   Visualg(logG,logP,Cout);
 
 endfunction
