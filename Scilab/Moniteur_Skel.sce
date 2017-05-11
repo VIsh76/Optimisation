@@ -24,11 +24,14 @@ funcprot(0);
    exec('Visualg.sci');
    
    // Verification  des resultats
-
+   exec('Gradient_Newton.sci');
    exec('HydrauliqueP.sci');
    exec('HydrauliqueD.sci');
    exec('Verification.sci');
    exec('Gradient_F.sci');
+
+   exec('Gradient_F.sci');
+   exec('Gradient_BFGS.sci');
 // ------------------------------------------
 // Fonctions a ecrire dans le cadre du projet
 // ------------------------------------------
@@ -38,7 +41,11 @@ funcprot(0);
    //
    // Exemple : la fonction "optim" de Scilab
    //
+   exec('OracleDG.sci');
+   exec('OracleDH.sci');
    exec('OraclePG.sci');
+   exec('OraclePH.sci');
+      
    //F=OraclePG())
    exec('Optim_Scilab.sci');
    exec('Wolfe_Skel.sci');
@@ -56,9 +63,9 @@ funcprot(0);
 
    // La dimension (n-md) est celle du probleme primal
 
-   xini = 0.1 * rand(n-md,1);
-  [fopt,xopt,gopt] = Gradient_V(OraclePG,xini);
-//  [fopt,xopt,gopt] = Gradient_Polak(OraclePG,xini);
+   xini = 0.1 * rand(md,1);
+//  [fopt,xopt,gopt] = Gradient_V(OraclePG,xini);
+  [fopt,xopt,gopt] = Gradient_Newton(OracleDH,xini);
    
 
 // ----------------------------
@@ -76,8 +83,8 @@ funcprot(0);
 // Verification des resultats
 // --------------------------
 
-   [q,z,f,p] = HydrauliqueP(xopt);
-
+   [q,z,f,p] = HydrauliqueD(xopt);
+// [q,z,f,p] = HydrauliqueP(xopt);
    Verification(q,z,f,p);
 
 //

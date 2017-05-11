@@ -62,7 +62,7 @@ function [fopt,xopt,gopt]=Gradient_Polak(Oracle,xini)
   
 //    - calcul de la longueur du pas de gradient
 
-      alpha=Wolfe(1,x,D,Oracle);
+      alpha=Wolfe(alphai,x,D,Oracle);
 
 //    - mise a jour des variables
 

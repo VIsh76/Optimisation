@@ -13,11 +13,3 @@ function [F,G,ind]=OraclePG(qc,ind)
         G=B'*(y+z);
     end      
 endfunction
-
-
-
-  
-
-   
-       
-   
